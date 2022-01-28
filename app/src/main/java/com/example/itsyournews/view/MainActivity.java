@@ -17,6 +17,7 @@ import com.example.itsyournews.R;
 import com.example.itsyournews.adapter.ArticleAdapter;
 import com.example.itsyournews.model.Article;
 import com.example.itsyournews.view_model.ArticleViewModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG =MainActivity.class.getSimpleName();
 
+    private ShimmerFrameLayout shimmerFrameLayout;
     private RecyclerView recycler_view;
     private ProgressBar progress_bar;
 
@@ -44,23 +46,31 @@ public class MainActivity extends AppCompatActivity {
         init();
 
         getArticles();
+
     }
 
     private void getArticles() {
         articleViewModel.getBashboardNewsResponseLiveData().observe(this, articleResponse -> {
             if(articleResponse!=null && articleResponse.getArticles()!=null
             && !articleResponse.getArticles().isEmpty()){
-                progress_bar.setVisibility(View.GONE);
+//                progress_bar.setVisibility(View.GONE);
                 List<Article> articleList = articleResponse.getArticles();
                 articleArrayList.addAll(articleList);
                 adapter.notifyDataSetChanged();
+                shimmerFrameLayout.stopShimmer();
+                shimmerFrameLayout.setVisibility(View.GONE);
+                recycler_view.setVisibility(View.VISIBLE);
+
             }
 
         });
     }
 
     private void init() {
-        progress_bar = findViewById(R.id.progress_bar);
+//        progress_bar = findViewById(R.id.progress_bar);
+        shimmerFrameLayout =findViewById(R.id.shimmerLayout);
+        shimmerFrameLayout.startShimmer();
+
         recycler_view=findViewById(R.id.recycler_view);
 
         layoutManager = new LinearLayoutManager(MainActivity.this);

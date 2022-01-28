@@ -8,7 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
+        android:background="@color/schimer_colour"
         android:id="@+id/imgViewCover">
 
     </ImageView>
@@ -18,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="270dp"
-        android:textColor="@color/white"
+        android:background="@color/schimer_colour"
         android:textStyle="bold">
 
     </TextView>

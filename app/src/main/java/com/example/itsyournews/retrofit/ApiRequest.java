@@ -9,6 +9,6 @@ import static com.example.itsyournews.constants.AppConstants.API_KEY;
 
 public interface ApiRequest {
 
-    @GET("top-headlines?country=no&category=business&apiKey="+API_KEY)
+    @GET("top-headlines?country=fr&category=business&apiKey="+API_KEY)
     Call<ArticleResponse> getTopHeadLines();
 }
