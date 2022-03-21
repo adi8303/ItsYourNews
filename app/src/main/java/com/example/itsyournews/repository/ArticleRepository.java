@@ -3,6 +3,7 @@ package com.example.itsyournews.repository;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.itsyournews.constants.AppConstants;
 import com.example.itsyournews.response.ArticleResponse;
 import com.example.itsyournews.retrofit.ApiRequest;
 import com.example.itsyournews.retrofit.RetrofitRequest;
@@ -20,10 +21,10 @@ public class ArticleRepository {
         apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
 
     }
-public LiveData<ArticleResponse>getDashBoardNews() {
+public LiveData<ArticleResponse>getDashBoardNews(String CCode) {  // CCode means CountryCode
 
     final MutableLiveData<ArticleResponse> data = new MutableLiveData<>();
-    apiRequest.getTopHeadLines()
+    apiRequest.getTopHeadLines(CCode,"business", AppConstants.API_KEY)  //changes done to send country as a parameter
             .enqueue(new Callback<ArticleResponse>() {
                 @Override
                 public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
@@ -34,10 +35,11 @@ public LiveData<ArticleResponse>getDashBoardNews() {
 
                 @Override
                 public void onFailure(Call<ArticleResponse> call, Throwable t) {
-                        data.setValue(null);
+                        data.setValue(null);    
                 }
             });
     return data;
 }
 
 }
+//

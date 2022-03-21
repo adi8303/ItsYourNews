@@ -15,6 +15,7 @@
     <!--        android:layout_centerVertical="true">-->
 
     <!--    </ProgressBar>-->
+
     <com.facebook.shimmer.ShimmerFrameLayout
 
         android:id="@+id/shimmerLayout"
@@ -50,5 +51,8 @@
 
 
     </androidx.recyclerview.widget.RecyclerView>
+
+
+
 
 </RelativeLayout>

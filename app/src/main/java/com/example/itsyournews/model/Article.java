@@ -22,6 +22,7 @@ public class Article {
 
     @NonNull
     @Override
+//    convert the the JSON format data to string
     public String toString() {
 //        filtering out our needed data
         return "BashBoardNews{"+

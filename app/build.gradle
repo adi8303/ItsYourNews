@@ -29,6 +29,9 @@ android {
 }
 
 dependencies {
+
+    implementation "com.google.android.gms:play-services-location:17.0.0"
+
 //lifecycle-mvvm for viewmodel provider
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     // retrofit2 /app/build.gradle dependencies
